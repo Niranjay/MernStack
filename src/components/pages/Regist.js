@@ -19,9 +19,10 @@ const navigate= useNavigate()
     useEffect(()=>{
         if(localStorage.getItem("myData"))
         {
+            navigate ("/home")
 
         }
-    })
+    },[])
 
     function saveMe() {
         console.log({name,age, hobby, gender, email, password})

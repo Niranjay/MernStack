@@ -4,10 +4,11 @@ import { Navigate, useNavigate } from 'react-router-dom'
 export const Logout = () => {
     const navigate= useNavigate();
     localStorage.clear();
+    navigate("/login")
     
     return (
         <>
-        <navigate to= "/login" />
+      <h1>this is logOut.....</h1>
         </>
     )
 }

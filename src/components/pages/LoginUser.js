@@ -16,9 +16,9 @@ function LoginUser (){
     const navigate= useNavigate()
    
     useEffect(()=>{
-        if(localStorage.getItem("myData._id"))
+        if(localStorage.getItem("myData"))
         {
-            navigate("/")
+            navigate("/home")
 
         }
     },[])

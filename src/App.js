@@ -16,6 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginUser from './components/pages/LoginUser';
 import { Logout } from './components/pages/Logout';
+import Protected from './components/pages/Protected';
 // import {LogContext} from "./components/context/LogContext";
 
 function App() {
@@ -34,9 +35,7 @@ function App() {
        
         
         <Route  exact path="/"  element={<Home/>} />
-        {
-          localStorage.
-        }
+
         <Route   path="/users/show" element={<CrudApi/>} />
         <Route path="/user/edit/:id" element={<EditData/>} />
         <Route path="/home" element={<Home/>} />

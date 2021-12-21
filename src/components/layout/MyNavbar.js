@@ -12,13 +12,13 @@ function MyNavbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              
-                {/* localStorage.getItem("myData._id") ? */}
-                  
-                    <li className="nav-item">
+              {
+                localStorage.getItem("myData") ?
+                  <>
+                  <li className="nav-item">
                       <Link className="nav-link active" aria-current="page" to="/home">Home</Link>
                     </li>
-                  
+
                     <li className="nav-item">
                       <Link className="nav-link" to="/users/show">Show-Data</Link>
                     </li>
@@ -28,8 +28,15 @@ function MyNavbar() {
                       <Link className="nav-link" to="/user/edit/:id">Edt-User</Link>
                     </li>
 
-                  
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/logout">Logout</Link>
+                    </li>
+                    
 
+
+                  </>
+                  :
+                  <>
                     <li className="nav-item">
                       <Link className="nav-link" to="/login">Login</Link>
                     </li>
@@ -37,9 +44,17 @@ function MyNavbar() {
                     <li className="nav-item">
                       <Link className="nav-link" to="/user/registration">SingUp</Link>
                     </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/logout">Logout</Link>
-                    </li>
+
+
+
+
+                  </>
+              }
+
+
+
+
+
 
             </ul>
             <form className="d-flex">
