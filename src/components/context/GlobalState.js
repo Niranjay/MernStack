@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
+import MyNewContxt from './MyNewContxt';
 
 // Initial State
 const initialState = {
@@ -7,10 +8,10 @@ const initialState = {
 }
 
 // Create Context
-export const GlobalContext = createContext(initialState);
+ const GlobalContext = createContext(initialState);
 
 // Provider Component
-export const GlobalProvider = ({ children }) => {
+ const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Actions
@@ -46,3 +47,5 @@ export const GlobalProvider = ({ children }) => {
     </GlobalContext.Provider>
   )
 }
+
+export MyNewContxt

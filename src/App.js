@@ -17,6 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoginUser from './components/pages/LoginUser';
 import { Logout } from './components/pages/Logout';
 import Protected from './components/pages/Protected';
+import {myNewContxt} from './components/context/MyNewContxt';
 // import {LogContext} from "./components/context/LogContext";
 
 function App() {
@@ -24,11 +25,10 @@ function App() {
     <>
   
       <h1> Welcome</h1>
-      <ToastContainer/>
+      <myNewContxt>
+        <ToastContainer/>
+        
      {/* <MyNavbar/> */}
-
-     {/* <LogContext> */}
-         
       <Routes>
         <Route path="/user/Registration" element={<Regist/>}/>
         <Route path="/login" element={<LoginUser/>} />
@@ -40,21 +40,19 @@ function App() {
         <Route path="/user/edit/:id" element={<EditData/>} />
         <Route path="/home" element={<Home/>} />
         <Route  exact path="/logout"  element={<Logout/>} />
-        
-    
 
         {/* <Route redirect  to="/crudapi" /> */}
-        
 
         <Route   element={<Error/>}/>
       </Routes>
-
-      {/* </LogContext> */}
+      
      
-     {/* <Home/> */}
+      
       <div className="App">      
    {/* <CrudApi /> */}
+    
    </div>
+   </myNewContxt>
    </>
   );
 }
