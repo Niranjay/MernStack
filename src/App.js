@@ -17,15 +17,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoginUser from './components/pages/LoginUser';
 import { Logout } from './components/pages/Logout';
 import Protected from './components/pages/Protected';
-import {myNewContxt} from './components/context/MyNewContxt';
-// import {LogContext} from "./components/context/LogContext";
+import MyState from './components/context/MyState';
+// import {MyNewContxt} from './components/context/MyNewContxt';
+
 
 function App() {
   return (
     <>
-  
+      <MyState>
       <h1> Welcome</h1>
-      <myNewContxt>
+      {/* <MyNewContxt> */}
         <ToastContainer/>
         
      {/* <MyNavbar/> */}
@@ -52,7 +53,8 @@ function App() {
    {/* <CrudApi /> */}
     
    </div>
-   </myNewContxt>
+   </MyState>
+   {/* </MyNewContxt> */}
    </>
   );
 }

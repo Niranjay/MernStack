@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyNavbar from '../layout/MyNavbar';
-import MyNewContxt from '../context/MyNewContxt';
 
-import Home from './Home';
+
 
 function LoginUser() {
-    const { luser, setLuser } = useContext(MyNewContxt)
+    // const { luser, setLuser } = useContext(MyNewContxt)
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -32,17 +31,16 @@ function LoginUser() {
             });
         const data = await res.json();
         console.log("my data lovely data", data.user)
-        localStorage.setItem('myData', JSON.stringify(data.user));
         
-        // setLuser (data.user)              //Transfer value to Context
-
+        // setLuser (data.user)              //Transfer value to Context     
         if (!data.user) {
             window.alert("Invalid Credentials")
         }
         else {
-            window.alert("Login success")
+            window.alert("Login success...." )
+            localStorage.setItem('myData', JSON.stringify(data.user));
             navigate("/home")
-            console.warn("set LUser :", luser);
+            // console.warn("set LUser :", luser);
         }
     }
 

@@ -3,7 +3,7 @@ import { createContext } from "react";
 
 export const MyNewContxt = createContext()
 
-export const MyNewContxt = ({ children }) =>{
+export const MyNewContxtProvider = ({ children }) =>{
     const [luser, setLuser] = useState({
         name: '',
         hobby: '',
