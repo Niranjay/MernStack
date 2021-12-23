@@ -4,8 +4,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyNavbar from '../layout/MyNavbar';
 
-
-
 function LoginUser() {
     // const { luser, setLuser } = useContext(MyNewContxt)
 
@@ -30,15 +28,15 @@ function LoginUser() {
                 })
             });
         const data = await res.json();
-        console.log("my data lovely data", data.user)
+        console.log("my data lovely data", data.userLogin)
         
         // setLuser (data.user)              //Transfer value to Context     
-        if (!data.user) {
+        if (!data.userLogin) {
             window.alert("Invalid Credentials")
         }
         else {
             window.alert("Login success...." )
-            localStorage.setItem('myData', JSON.stringify(data.user));
+            localStorage.setItem('myData', JSON.stringify(data.userLogin));
             navigate("/home")
             // console.warn("set LUser :", luser);
         }

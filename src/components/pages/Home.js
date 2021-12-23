@@ -7,22 +7,33 @@ import GlobaContxt from '../context/GlobalContxt';
 
 function Home (){
     const a = useContext(GlobaContxt)
+    var lname ="";
+    const navigate = useNavigate()
 
     useEffect(()=>{
-        a.update();
-    },[])
-    // a.newState.name="hello"
+        if (localStorage.getItem("myData")) {
+            const comment = JSON.parse(localStorage.getItem('myData'));
+             lname= comment.name
+        }
+        else{
+        navigate("/login")
+        }
+    })
+    
     // const ldata= localStorage.getItem("myData")
-    const comment = JSON.parse(localStorage.getItem('myData'));
-console.warn("state testing", comment.name);
+    // const comment = JSON.parse(localStorage.getItem('myData'));
+
+
+
     return (
         <>
         <MyNavbar/>
         <br></br>
+        
             <div className="container" style={ {backgroundColor:"#cff"}}>
-                <h1>This is home page and i am {comment.name} </h1>
-                <p>i am {a.newState.age} years old.</p>
-                </div>
+                <h1>Welcome {lname} , this is home page</h1>
+                {/* <p>i am {comment.age} years old.</p> */}
+                </div>               
 
         </>
     );

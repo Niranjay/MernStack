@@ -20,7 +20,8 @@ const CrudApi = () => {
     const [data, setData]= useState([]);
 
     useEffect(() => {
-  getlist()
+        if(localStorage){
+  getlist()}
 }, []);
 
 function getlist()

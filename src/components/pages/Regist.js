@@ -18,32 +18,30 @@ const navigate= useNavigate()
         if(localStorage.getItem("myData"))
         {
             navigate ("/home")
-
         }
     },[])
 
     function saveMe() {
-        console.log({name,age, hobby, gender, email, password})
-        setName("");
-        setAge("");
-        setHobby("");
-        setGender("");
-        setEmail("");
-        setPassword("");
+        // console.log({name,age, hobby, gender, email, password})
+        
+        
         if (age >= 12) {
             let data = {name, email, password, age, hobby, gender }
-
+            
             
             fetch("http://localhost:5000/addstu", {
                 method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             }).then((result) => {
-                navigate('/login') 
                 
-                // alert("Data saved Successfuly...");
-                // navigate('/users/show')          //use for redirect to CrudApi page
-            })
-            toast("New User Ragistred Successfuly...");
+                if(result.status==202){
+                    toast("New User Ragistred Successfuly...");
+                    navigate('/login') 
+                }else{
+                    toast("User Already Exist.")
+                }
+            })    
+
         }
         else {
             toast("Kindly enter right age ");

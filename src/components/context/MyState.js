@@ -22,7 +22,6 @@ const MyState =(props)=>{
         <GlobaContxt.Provider value={{newState, update}}>
         {props.children};
         </GlobaContxt.Provider>
-
     )
 }
 

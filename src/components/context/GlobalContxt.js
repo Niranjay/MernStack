@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const GlobaState =createContext();
+const GlobaContxt =createContext();
 
-export default GlobaState;
+export default GlobaContxt;
