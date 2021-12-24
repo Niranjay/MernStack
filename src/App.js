@@ -28,7 +28,8 @@ const navigate = useNavigate()
   return (
     <>
       <MyState>
-      <h1> Welcome</h1>
+        <br/>
+      {/* <h1> Welcome</h1> */}
       {/* <MyNewContxt> */}
         <ToastContainer/>
         
@@ -43,7 +44,7 @@ const navigate = useNavigate()
         <Route path="/user/edit/:id" element={<EditData/>} />
         <Route path="/home" element={<Home/>} />
         <Route  exact path="/logout"  element={<Logout/>} />
-        <Route    element={<ErrPage/>} />
+        <Route path="*"  element={<ErrPage/>} />
         {/* <Route navi */}
 
         {/* <Route element={</ErrPage>} /> */}
