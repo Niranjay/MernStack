@@ -19,7 +19,7 @@ const navigate= useNavigate()
         {
             navigate ("/home")
         }
-    },[])
+    })
 
     function saveMe() {
         // console.log({name,age, hobby, gender, email, password})
@@ -34,7 +34,7 @@ const navigate= useNavigate()
                 body: JSON.stringify(data)
             }).then((result) => {
                 
-                if(result.status==202){
+                if(result.status===202){
                     toast("New User Ragistred Successfuly...");
                     navigate('/login') 
                 }else{
@@ -51,7 +51,7 @@ const navigate= useNavigate()
     // radio Button Working....
     const genChange = (e) => {
         const target = e.target
-        const name = target.name
+        // const name = target.name
         const value = target.value
         // console.log(value)
         setGender(value)

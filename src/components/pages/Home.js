@@ -7,23 +7,23 @@ import GlobaContxt from '../context/GlobalContxt';
 
 function Home (){
     const a = useContext(GlobaContxt)
-    var lname ="";
+     const [lname, setLname] = useState("") 
     const navigate = useNavigate()
 
     useEffect(()=>{
         if (localStorage.getItem("myData")) {
             const comment = JSON.parse(localStorage.getItem('myData'));
-             lname= comment.name
+             setLname(comment.name) 
+             console.log("userName:",lname);
         }
         else{
+            setLname("")
         navigate("/login")
         }
     })
     
     // const ldata= localStorage.getItem("myData")
     // const comment = JSON.parse(localStorage.getItem('myData'));
-
-
 
     return (
         <>
@@ -34,9 +34,7 @@ function Home (){
                 <h1>Welcome {lname} , this is home page</h1>
                 {/* <p>i am {comment.age} years old.</p> */}
                 </div>               
-
         </>
     );
 };
-
 export default Home

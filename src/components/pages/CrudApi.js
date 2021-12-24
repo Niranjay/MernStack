@@ -3,6 +3,7 @@ import {  useState, useEffect}  from 'react';
 // import PostData from './PostData';
 import EditData from './EditData';
 import {Link, useHisoty, useParams} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import PostData from './PostData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,10 +20,20 @@ const CrudApi = () => {
 
     const [data, setData]= useState([]);
 
-    useEffect(() => {
-        if(localStorage){
-  getlist()}
-}, []);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if (localStorage.getItem("myData")) {
+            const comment = JSON.parse(localStorage.getItem('myData'));
+            getlist();
+        }
+        else{
+        navigate("/login")
+        }
+    },[])
+//     useEffect(() => {
+//         if(localStorage){
+//   getlist()}
+// }, []);
 
 function getlist()
 {
