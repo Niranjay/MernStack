@@ -28,16 +28,21 @@ function LoginUser() {
                 })
             });
         const data = await res.json();
-        console.log("my data lovely data", data.userLogin)
+        console.log("User Info on Login...", data)
+        const LuserData= data.message;
+        const Luser=data.logUser
+        console.log("My Login User Data1 : ", Luser)
+        console.log("Massage to user on login : ", LuserData)
         
         // setLuser (data.user)              //Transfer value to Context     
-        if (!data.userLogin) {
-            window.alert("Invalid Credentials")
+        if (LuserData==="Login Suceesfull") {
+            window.alert("Login success...." )
+            localStorage.setItem('myData', JSON.stringify(Luser));
+            navigate("/home")
         }
         else {
-            window.alert("Login success...." )
-            localStorage.setItem('myData', JSON.stringify(data.userLogin));
-            navigate("/home")
+            window.alert("Invalid Credentials")
+            
             // console.warn("set LUser :", luser);
         }
     }
