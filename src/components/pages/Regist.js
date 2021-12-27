@@ -69,7 +69,7 @@ const navigate= useNavigate()
                 <div className='container' >
 
                     <br /><label >UserName  </label><br/>
-                    <input type="text" value={name} name="name" onChange={(e) => { setName(e.target.value) }} /><br /><br />
+                    <input type="text" value={name} name="name" onChange={(e) => { setName(e.target.value.toUpperCase()) }} /><br /><br />
 
                     <label >E-mail Address  </label>
                     <br/>

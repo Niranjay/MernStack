@@ -1,5 +1,5 @@
 import React,{ useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 const ErrPage = () => {
@@ -13,10 +13,12 @@ const ErrPage = () => {
     })
     return (
         <>
-        <div className="col-sm-6 offset-sm-3">
-            <h1 > 404 ErrorPage</h1>
+        <div className="col-sm-10 offset-sm-4" >
+            <h1  > 404 ErrorPage !</h1>
             <p >Opps! Page not Found..</p>
+            <NavLink to="/">Go To Home</NavLink>
             </div>
+
         </>
     );
 };
