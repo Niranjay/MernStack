@@ -20,6 +20,8 @@ import { useNavigate } from 'react-router-dom';
 import Protected from './components/pages/Protected';
 import MyState from './components/context/MyState';
 import ErrPage from './components/pages/ErrPage';
+// import { ForgotPass } from './components/pages/ForgotPass';
+import ResetPass from './components/pages/ResetPass';
 // import {MyNewContxt} from './components/context/MyNewContxt';
 
 
@@ -45,6 +47,7 @@ const navigate = useNavigate()
         <Route path="/home" element={<Home/>} />
         <Route  exact path="/logout"  element={<Logout/>} />
         <Route path="*"  element={<ErrPage/>} />
+        <Route path = "/forgot" element={<ResetPass /> }/>
         {/* <Route navi */}
 
         {/* <Route element={</ErrPage>} /> */}

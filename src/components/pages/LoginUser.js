@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyNavbar from '../layout/MyNavbar';
+import { NavLink } from 'react-router-dom';
 
 function LoginUser() {
     // const { luser, setLuser } = useContext(MyNewContxt)
@@ -16,6 +17,8 @@ function LoginUser() {
             navigate("/home")
         }
     }, [])
+
+    // Login async Function
     const login = async (e) => {
         e.preventDefault();
         const res = await fetch("http://localhost:5000/login",
@@ -71,7 +74,8 @@ function LoginUser() {
                         <label className="form-check-label" for="exampleCheck1">Stay Logged In</label>
                     </div>
                     <br />
-                    <button className="btn btn-primary" onClick={login}>Login</button>
+                    <button className="btn btn-primary btn-block" onClick={login}>Login</button>
+                    <p ><NavLink to="/forgot">Forgot Password?</NavLink></p>
                 </form>
                 <br />
             </div>

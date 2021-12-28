@@ -40,7 +40,7 @@ function Home (){
                 <h1>Welcome {lname} , this is home page</h1>
                 <p>Want to see Vedio, paste vedio Link</p>
                 <div  className='container-fluid' center>
-                <input  type="Text" name='vUrl' value={vUrl} placeholder='Enter Vedio Link/URL to play this' onChange={(e) => { setVurl(e.target.value) }}  />
+                <input className='' type="Text" name='vUrl' value={vUrl} placeholder='Enter Vedio Link/URL to play this' onChange={(e) => { setVurl(e.target.value) }}  />
                 {/* <button className='btn btn-primary' >Go</button> */}
                 <br/><br/><br/><br/>
 
