@@ -25,26 +25,36 @@ function ResetPass(){
         console.log("User Info For Password Reset...", data)
     }
 
+
+    // function call on GetOTP button
     const getOTP = async (e)=> {
         e.preventDefault();
         let data={email, otp}
-        fetch("http://localhost:5000/sendotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
-        body:JSON.stringify(data)
-    } ).then((result)=>{
+        // if(!data.email){
+        //     toast.warning("Mail Id Cant be Blank",
+        //     {
+        //         position:"top-center"
+        //     });
+        // }
+
+            fetch("http://localhost:5000/sendotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
+                    body:JSON.stringify(data)} 
+                    ).then((result)=>{
         // navigate('/users/show')          //use for redirect to CrudApi page
         console.log(data)
-        if(data.otp){
+        if(data){
             toast.success("OTP Send sucessfully...",
             {
                 position:"top-center"
             });
         }
         else{
-            toast.success("User Not Found",
+            toast.error("User Not Found",
             {
                 position:"top-center"
             });
         }
+        
         //  alert("Data saved Successfuly...");
     })
     
@@ -53,10 +63,22 @@ function ResetPass(){
  const resetPass=(e)=>{
      e.preventDefault();
      let data={email, otp, password}
+     if(!data.password){
+        toast.error("Password Can't be blank...",
+        {
+            position:"top-center"
+        });
+         
+     }
      fetch("http://localhost:5000/matchotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
         body:JSON.stringify(data)
     } ).then((result)=>{
-        console.log(data,": OTP MATCH SUCCESS")
+        toast.success("Password changed...",
+        {
+            position:"top-center"
+        });
+
+        console.log(result.message)
     })
  }
 
