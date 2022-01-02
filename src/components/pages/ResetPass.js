@@ -10,44 +10,23 @@ function ResetPass(){
     const [email, setEmail] = useState("");
     const [password, setPass] = useState("");
     const [otp, setOtp] = useState("");
-    
-    // function call on onclick
-    const resetForgot = async (e) => {
-        e.preventDefault();
-        const forgotData= await fetch("http://localhost:5000/getstu",
-        {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({email})
-        });
-        
-        const data = await resetForgot.json();
-        console.log("User Info For Password Reset...", data)
-    }
-
 
     // function call on GetOTP button
     const getOTP = async (e)=> {
         e.preventDefault();
-        let data={email, otp}
-        // if(!data.email){
-        //     toast.warning("Mail Id Cant be Blank",
-        //     {
-        //         position:"top-center"
-        //     });
-        // }
-
-            fetch("http://localhost:5000/sendotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
+        let data={email}
+        
+        fetch("http://localhost:5000/sendotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
                     body:JSON.stringify(data)} 
                     ).then((result)=>{
         // navigate('/users/show')          //use for redirect to CrudApi page
-        console.log(data)
-        if(data){
+        console.log(getOTP)
+        if(getOTP){
             toast.success("OTP Send sucessfully...",
             {
                 position:"top-center"
             });
-        }
+        }    
         else{
             toast.error("User Not Found",
             {
@@ -55,10 +34,13 @@ function ResetPass(){
             });
         }
         
-        //  alert("Data saved Successfuly...");
+      
     })
     
 }
+
+
+// Fuction on Submit
 
  const resetPass=(e)=>{
      e.preventDefault();
@@ -70,17 +52,27 @@ function ResetPass(){
         });
          
      }
+
+
+    //  if(data.otp){
+
+    //  }
+     if(data.otp){
      fetch("http://localhost:5000/matchotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
         body:JSON.stringify(data)
     } ).then((result)=>{
-        toast.success("Password changed...",
-        {
-            position:"top-center"
-        });
+       console.log("result",data.email)
 
         console.log(result.message)
-    })
- }
+    })}
+    else{
+        // toast.warning("OTP Not Found...",
+        // {
+        //     position:"top-center"
+        // });
+    }
+
+}
 
 
     return (
