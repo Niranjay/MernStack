@@ -1,7 +1,7 @@
 // import { React, useEffect, createContext, useContext, useState } from 'react'
 import { useState, useEffect } from 'react';
 
-import { useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyNavbar from '../layout/MyNavbar';
@@ -19,6 +19,8 @@ function ResetPass(){
     const [otpHide, setOtpHide] = useState("hedden")
     const [condown, setCondown] = useState("hidden")
     const [resDis, setResDis] = useState("disable")
+
+    const navigate = useNavigate()
 
     const [tCont, setTcont] = useState(20);
     
@@ -86,20 +88,32 @@ function ResetPass(){
     //  }
 
      if(data.otp){
-     fetch("http://localhost:5000/matchotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
+        const otpData = fetch("http://localhost:5000/matchotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
         body:JSON.stringify(data)
     } ).then((result)=>{
 
-        if(result.status(202)){
-            toast.error("Change Success",
-        {
-            position:"top-center"
-        });
-        }
-       console.log("result",data.email)
+        console.log("result",result)
+       const resStatus = result.status
+       if(resStatus === 202){
+            toast.success("Password Updated.",
+            {
+                position:"top-center"
+            });
+            navigate("/home")
+            }
+            else{
+                toast.error("Error Found.",
+            {
+                position:"top-center"
+            });
+            }
+   
+
 
         console.log(result.message)
-    })}
+    })
+    console.log("Datatatata massage", otpData)
+}
     else{
         toast.warning("OTP Not Found...",
         {
@@ -108,7 +122,6 @@ function ResetPass(){
     }
 
 }
-
 
 
 function showfull(e){
