@@ -17,6 +17,8 @@ function ResetPass(){
     const [showpass, setShowpass]= useState("hidden")
     const [emailHide, setEmailHide] = useState("")
     const [otpHide, setOtpHide] = useState("hedden")
+    const [condown, setCondown] = useState("hidden")
+    const [resDis, setResDis] = useState("disable")
 
     const [tCont, setTcont] = useState(20);
     
@@ -50,6 +52,9 @@ function ResetPass(){
                                     setHid("")
                                     setEmailHide("hidden")
                                     setOtpHide("")
+                                    setCondown("")
+                                    setCounter(10)
+                                    setResDis("disable")
                                }    
                                 else {
                                     toast.error("User Not Found",
@@ -69,33 +74,37 @@ function ResetPass(){
 // Fuction on Submit
 
  const resetPass=(e)=>{
+
      e.preventDefault();
      let data={email, otp, password}
-     if(!data.password){
-        toast.error("Password Can't be blank...",
-        {
-            position:"top-center"
-        });
+    //  if(!data.password){
+    //     toast.error("Password Can't be blank...",
+    //     {
+    //         position:"top-center"
+    //     });
          
-     }
-
-
-    //  if(data.otp){
-
     //  }
+
      if(data.otp){
      fetch("http://localhost:5000/matchotp",{ method :'POST', headers:{'Accept':'application/json', 'Content-Type':'application/json'},
         body:JSON.stringify(data)
     } ).then((result)=>{
+
+        if(result.status(202)){
+            toast.error("Change Success",
+        {
+            position:"top-center"
+        });
+        }
        console.log("result",data.email)
 
         console.log(result.message)
     })}
     else{
-        // toast.warning("OTP Not Found...",
-        // {
-        //     position:"top-center"
-        // });
+        toast.warning("OTP Not Found...",
+        {
+            position:"top-center"
+        });
     }
 
 }
@@ -105,13 +114,31 @@ function ResetPass(){
 function showfull(e){
     e.preventDefault();
  setHid("hidden")
+ setOtpHide("hidden")
+ setCondown("hidden")
  setShowpass("")
  setdisbl("disable")
 
+
 }
-function timer(){
-    const times = new Date().getTime() + 300*10000
-}
+
+
+
+const [counter, setCounter] = useState(0);
+useEffect(() => {
+    const timer =(counter > 0 && setInterval(() => setCounter(counter - 1), 1000));
+    if(counter === 1)
+    {
+        setCondown("hidden") 
+        setResDis("")
+        
+    }
+
+    return () => clearInterval(timer);
+}, [counter]);
+
+
+
 
 
 
@@ -131,8 +158,10 @@ function timer(){
                     
                     <input type="text" className='form-control' placeholder="Otp" hidden={otpHide} disabled={disbl} name="OTP"  onChange={(e) => { setOtp(e.target.value) }} />
                     <p ></p>
-                    < h2 style={{textAlign: 'left'}}>{tCont}</h2><br/>
-                    <br/><button onClick={getOTP} hidden={otpHide}>Resend Otp</button>
+                    
+                    <h3 hidden={condown} style={{color:"red", marginLeft:"8rem"}}>Resend Otp In:: <span style={{ color:"green",fontWeight:"bold"}}> 00:{counter}</span></h3>   
+                    <br/><button onClick={getOTP} disabled={resDis} hidden={otpHide}>Resend Otp</button>
+                    
                     <br/><input type="password" className='form-control'hidden={showpass} placeholder="New Password" name="newPassword"  onChange={(e) => { setPass(e.target.value) }} />
                     <br/>
                 </div>
