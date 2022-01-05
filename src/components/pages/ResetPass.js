@@ -55,7 +55,7 @@ function ResetPass(){
                                     setEmailHide("hidden")
                                     setOtpHide("")
                                     setCondown("")
-                                    setCounter(10)
+                                    setCounter(20)
                                     setResDis("disable")
                                }    
                                 else {
@@ -126,12 +126,15 @@ function ResetPass(){
 
 function showfull(e){
     e.preventDefault();
- setHid("hidden")
+    if(otp){
+        setHid("hidden")
  setOtpHide("hidden")
  setCondown("hidden")
  setShowpass("")
  setdisbl("disable")
 
+    }
+ 
 
 }
 
