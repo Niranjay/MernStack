@@ -1,8 +1,16 @@
 const express = require ('express');
-const addProduct = require('../controler/ProductsApi/AddProduct');
 const router = express.Router()
 
-const addProducts=  require("../controler/ProductsApi/AddProduct")
-router.get("/addproduct", addProducts.addProduct)
+const addProduct=  require("../controler/ProductsApi/AddProduct")
+router.get("/addproduct", addProduct.addProduct)
+
+const allData= require("../controler/ProductsApi/getAllProduct")
+router.get("/productList", allData.allProduct)
+
+// const greterThen = require("../controler/Greterthen")
+// router.get("/greterthen", greterThen.GraterThen )
+
+
+
 
 module.exports = router;

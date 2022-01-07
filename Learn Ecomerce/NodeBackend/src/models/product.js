@@ -6,7 +6,8 @@ const req = require('express/lib/request');
 const proSchema = new mongoose.Schema({
     name:{type: String},
     quantity:{type : Number},
-    Discripn:{type: String},
+    avail_quantity : {type: Number},
+    discription:{type: String},
     price:{type: Number}
 })
 

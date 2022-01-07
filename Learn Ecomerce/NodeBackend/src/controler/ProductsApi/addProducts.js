@@ -6,9 +6,9 @@ const product = require("../../models/product");
 
 // Add new Products
 router.post("/addproduct", async (req, res) => {
-    const { name, quantity, Discripn, price } = req.body; 
+    const { name, quantity, avail_quantity, discription, price  } = req.body; 
     try {
-    if (!name || !quantity || !Discripn || !price) {
+    if (!name || !quantity || !discription || !price || !avail_quantity) {
         return res.json({ error: "All Field must be Filled." });
     }
    
@@ -17,7 +17,7 @@ router.post("/addproduct", async (req, res) => {
             console.log("Product Can't Add To List .... Already Registerd..")
             return res.status(422).json({ error: "Product Can't Add To List .... Already Registerd.." });
         }
-        const pro = new product({ name, quantity, Discripn, price })                  
+        const pro = new product({ name, quantity, discription, price, avail_quantity })                  
         await pro.save();
         console.log("Product Registerd Suceesfull")
         res.status(202).json({ message: "Product Registerd Suceesfull" });
@@ -25,6 +25,27 @@ router.post("/addproduct", async (req, res) => {
     } catch (err) { consol.log(err); }
 })
 
+
+
+
 // Update Product
+router.post("/updateproduct", async (req, res) => {
+    const { name, quantity, discription, price, avail_quantity } = req.body; 
+    try {
+    if (!name || !quantity || !avail_quantity || !discription || !price) {
+        return res.json({ error: "All Field must be Filled." });
+    }
+   
+        const proExist = await product.findOne({ name:name });
+        if (proExist) {
+            return res.status(422).json({ error: "Product Can't Add To List .... Already Registerd.." });
+        }
+        const pro = new product({ name, quantity, discription, price, avail_quantity })                  
+        await pro.save();
+        console.log("Product Registerd Suceesfull")
+        res.status(202).json({ message: "Product Registerd Suceesfull" });
+
+    } catch (err) { consol.log(err); }
+})
 
 module.exports = router;

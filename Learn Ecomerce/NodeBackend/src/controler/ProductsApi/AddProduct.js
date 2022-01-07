@@ -1,7 +1,3 @@
-const express = require('express')
-const router = express.Router();
-const mongo = require('mongoose')
-router.use(express.json())
 const product = require("../../models/product");
 
 const addProduct = async (req, res) => {
