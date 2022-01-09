@@ -5,10 +5,10 @@ const req = require('express/lib/request');
 // define Schema
 const proSchema = new mongoose.Schema({
     name:{type: String},
-    quantity:{type : Number},
-    avail_quantity : {type: Number},
-    discription:{type: String},
-    price:{type: Number}
+    model:{type: String},
+    categoryId:{type :Number},
+    price:{type: Number},
+    discription:{type: String}
 })
 
 // create model

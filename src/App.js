@@ -1,13 +1,11 @@
 
 import React from 'react';
-// import ReactDOM from 'react-dom';
+
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import Home from './components/pages/Home';
 import CrudApi from './components/pages/CrudApi';
 import MyNavbar from './components/layout/MyNavbar';
-// import { Route,Routes} from "react-router-dom"
-
 import PostData from './components/pages/PostData';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import EditData from './components/pages/EditData';
@@ -20,22 +18,19 @@ import { useNavigate } from 'react-router-dom';
 import Protected from './components/pages/Protected';
 import MyState from './components/context/MyState';
 import ErrPage from './components/pages/ErrPage';
-// import { ForgotPass } from './components/pages/ForgotPass';
-import ResetPass from './components/pages/ResetPass';
-// import {MyNewContxt} from './components/context/MyNewContxt';
 
+import ResetPass from './components/pages/ResetPass';
+import Assignment from "./components/pages/Assignment";
 
 function App() {
 const navigate = useNavigate()
   return (
     <>
-      <MyState>
-        <br/>
-      {/* <h1> Welcome</h1> */}
-      {/* <MyNewContxt> */}
-        <ToastContainer/>
+    <Assignment/>
+      {/* <MyState> */}
         
-     {/* <MyNavbar/> */}
+        <br/>
+        {/* <ToastContainer/>
       <Routes>
         <Route path="/user/Registration" element={<Regist/>}/>
         <Route path="/login" element={<LoginUser/>} />
@@ -48,20 +43,13 @@ const navigate = useNavigate()
         <Route  exact path="/logout"  element={<Logout/>} />
         <Route path="*"  element={<ErrPage/>} />
         <Route path = "/forgot" element={<ResetPass /> }/>
-        {/* <Route navi */}
-
-        {/* <Route element={</ErrPage>} /> */}
-
-        {/* <Route redirect  to="/crudapi" /> */}
-        {/* <Route   element={<ErrPage/>}/> */}
-      </Routes>
+        
+      </Routes> */}
       
-      <div className="App">      
-   {/* <CrudApi /> */}
-    
+      <div className="App">          
    </div>
-   </MyState>
-   {/* </MyNewContxt> */}
+   {/* </MyState> */}
+
    </>
   );
 }
