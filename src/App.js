@@ -27,10 +27,10 @@ const navigate = useNavigate()
   return (
     <>
     <Assignment/>
-      {/* <MyState> */}
+      <MyState>
         
         <br/>
-        {/* <ToastContainer/>
+        <ToastContainer/>
       <Routes>
         <Route path="/user/Registration" element={<Regist/>}/>
         <Route path="/login" element={<LoginUser/>} />
@@ -44,11 +44,11 @@ const navigate = useNavigate()
         <Route path="*"  element={<ErrPage/>} />
         <Route path = "/forgot" element={<ResetPass /> }/>
         
-      </Routes> */}
+      </Routes>
       
       <div className="App">          
    </div>
-   {/* </MyState> */}
+   </MyState>
 
    </>
   );
