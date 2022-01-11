@@ -20,13 +20,14 @@ import MyState from './components/context/MyState';
 import ErrPage from './components/pages/ErrPage';
 
 import ResetPass from './components/pages/ResetPass';
-import Assignment from "./components/pages/Assignment";
+
+import Products from './components/pages/Products';
 
 function App() {
 const navigate = useNavigate()
   return (
     <>
-    <Assignment/>
+    
       <MyState>
         
         <br/>
@@ -34,11 +35,12 @@ const navigate = useNavigate()
       <Routes>
         <Route path="/user/Registration" element={<Regist/>}/>
         <Route path="/login" element={<LoginUser/>} />
-       
-        
+
         <Route  exact path="/"  element={<Home/>} />
         <Route   path="/users/show" element={<CrudApi/>} />
         <Route path="/user/edit/:id" element={<EditData/>} />
+        <Route path="/user/products-list" element={<Products/>} />
+
         <Route path="/home" element={<Home/>} />
         <Route  exact path="/logout"  element={<Logout/>} />
         <Route path="*"  element={<ErrPage/>} />
