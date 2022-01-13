@@ -1,11 +1,12 @@
 import Card from "react-bootstrap/Card";
 import ReactDOM from "react-dom";
 import React, { useState,useEffect } from 'react'
-import { Link , useParams} from "react-router-dom";
+import { Link } from "react-router-dom";
 import MyNavbar from "../layout/MyNavbar";
+import Cart from "./Cart";
 
 function ProdList() {
-    const [selects, setSelects] = useState();
+    const [selects, setSelects] = useState(0);
     const [product, setProduct] = useState();
     const [item, setItem] = useState(product);
     const [pname, setPname] =useState("");
@@ -44,6 +45,13 @@ if(dval<1){
 }}
 }
 
+// Fuction for cart
+const cardAdd=(event)=>{
+console.log("product Id",product._id)
+   setSelects(selects+1)
+
+}
+ 
     return (
         <>
         <MyNavbar/>
@@ -71,7 +79,8 @@ if(dval<1){
                 {item && item.map((post) => {
                         return (
                             <div className="col-md-4 py-4">
-                                 <Card  style={{ width: '18rem' }} >
+                                <Cart/>
+                                 {/* <Card  style={{ width: '18rem' }} >
                                     <Card.Img variant="top" src="holder.js/100px180" />
                                     <Card.Body >
                                     <Card.Title>{post.name}</Card.Title>
@@ -82,16 +91,18 @@ if(dval<1){
                                     <p/>
                                     < center>
                                    
-                                    <i class="fas fa-minus"></i>
-                                    <input type="text" placeholder="0" style={{width: "20px"}}/>
-                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus" onClick={()=>setSelects(selects-1)}></i>
+                                    <input type="text" placeholder="0" value={selects} onChange={(e) => { setSelects(e.target.value) }} style={{width: "40px", textAlign:"center"}}/>
+                                    <i class="fas fa-plus" onClick={()=>setSelects(selects+1)}></i>
                                     </center>
                                     </Card.Body> 
                                     
                                     {/* <Link className="btn btn-dark" to={`/getProId/${post._id}`} >Add To Cart</Link> */}
-                                    <Link className="btn btn-dark" to="/Cart" >Add To Cart</Link>
-                                   
-                                 </Card>
+                                    
+                                    <button className="btn btn-dark" style={{marginLeft:20}} onClick={cardAdd}>Add To Cart</button>
+                                    <button className="btn btn-dark float-right"style={{marginLeft:80}} >Buy</button>
+                                    
+                                   {/* </Card> */} 
                             </div>
                         )})}
             </div>

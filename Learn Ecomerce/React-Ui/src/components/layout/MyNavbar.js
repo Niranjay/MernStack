@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function MyNavbar() {
+  
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,11 +23,6 @@ function MyNavbar() {
                     <li className="nav-item">
                       <Link className="nav-link" to="/products-list">All-Products</Link>
                     </li>
-
-
-                    {/* <li className="nav-item">
-                      <Link className="nav-link" to="/user/edit/:id">Edt-User</Link>
-                    </li> */}
 
                     <li className="nav-item">
                       <Link className="nav-link" to="/logout">Logout</Link>

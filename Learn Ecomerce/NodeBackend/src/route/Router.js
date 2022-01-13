@@ -31,4 +31,7 @@ router.get("getstu/:id", stuDataById.stuDataById)
 const Proschema = require("../controler/ProductsAdd")
 router.post("/addproduct",jsonParser, Proschema.AddProd)
 
+const AddCart = require("../controler/AddCart")
+router.post("/addCart",jsonParser, AddCart.AddCart)
+
 module.exports = router;

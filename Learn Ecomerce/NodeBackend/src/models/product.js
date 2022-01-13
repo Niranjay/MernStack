@@ -4,6 +4,7 @@ const req = require('express/lib/request');
 
 // define Schema
 const proSchema = new mongoose.Schema({
+    Id : {Number},
     name:{type: String},
     model:{type: String},
     categoryId:{type :Number},
@@ -12,6 +13,6 @@ const proSchema = new mongoose.Schema({
 })
 
 // create model
-const Proschema= mongoose.model('Proschema',proSchema)
-module.exports=Proschema;
+const Proschema = mongoose.model('Proschema',proSchema)
+module.exports = Proschema;
 
